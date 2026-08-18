@@ -14,6 +14,16 @@ export type ActionResult<T = unknown> = {
   error?: string;
 };
 
+interface MilkSaleDbRow {
+  id: string;
+  userId: string;
+  date: Date;
+  litres: Decimal | number | { toNumber(): number };
+  pricePerLitre: Decimal | number | { toNumber(): number };
+  totalAmount: Decimal | number | { toNumber(): number };
+  fat: Decimal | number | { toNumber(): number };
+}
+
 /**
  * Get current authenticated user ID from Clerk.
  * Uses dev_local_user fallback if Clerk keys are not configured yet in .env
@@ -231,14 +241,16 @@ export async function getMilkSaleByIdAction(id: string) {
 
     if (!record) return null;
 
+    const row = record as unknown as MilkSaleDbRow;
+
     return {
-      id: record.id,
-      userId: record.userId,
-      date: record.date.toISOString().split("T")[0],
-      litres: record.litres.toNumber(),
-      pricePerLitre: record.pricePerLitre.toNumber(),
-      totalAmount: record.totalAmount.toNumber(),
-      fat: record.fat.toNumber(),
+      id: row.id,
+      userId: row.userId,
+      date: row.date.toISOString().split("T")[0],
+      litres: typeof row.litres === "number" ? row.litres : row.litres.toNumber(),
+      pricePerLitre: typeof row.pricePerLitre === "number" ? row.pricePerLitre : row.pricePerLitre.toNumber(),
+      totalAmount: typeof row.totalAmount === "number" ? row.totalAmount : row.totalAmount.toNumber(),
+      fat: typeof row.fat === "number" ? row.fat : row.fat.toNumber(),
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
     };
@@ -288,15 +300,18 @@ export async function getMilkSalesAction(params: {
     }),
   ]);
 
-  const formattedItems = items.map((item) => ({
-    id: item.id,
-    userId: item.userId,
-    date: item.date,
-    litres: item.litres.toNumber(),
-    pricePerLitre: item.pricePerLitre.toNumber(),
-    totalAmount: item.totalAmount.toNumber(),
-    fat: item.fat.toNumber(),
-  }));
+  const formattedItems = items.map((item: unknown) => {
+    const row = item as MilkSaleDbRow;
+    return {
+      id: row.id,
+      userId: row.userId,
+      date: row.date,
+      litres: typeof row.litres === "number" ? row.litres : row.litres.toNumber(),
+      pricePerLitre: typeof row.pricePerLitre === "number" ? row.pricePerLitre : row.pricePerLitre.toNumber(),
+      totalAmount: typeof row.totalAmount === "number" ? row.totalAmount : row.totalAmount.toNumber(),
+      fat: typeof row.fat === "number" ? row.fat : row.fat.toNumber(),
+    };
+  });
 
   const totalPages = Math.ceil(totalCount / limit) || 1;
 
@@ -402,14 +417,17 @@ export async function getDashboardDataAction(params: {
     .slice()
     .reverse()
     .slice(0, 5)
-    .map((r) => ({
-      id: r.id,
-      date: r.date,
-      litres: r.litres.toNumber(),
-      pricePerLitre: r.pricePerLitre.toNumber(),
-      totalAmount: r.totalAmount.toNumber(),
-      fat: r.fat.toNumber(),
-    }));
+    .map((r: unknown) => {
+      const row = r as MilkSaleDbRow;
+      return {
+        id: row.id,
+        date: row.date,
+        litres: typeof row.litres === "number" ? row.litres : row.litres.toNumber(),
+        pricePerLitre: typeof row.pricePerLitre === "number" ? row.pricePerLitre : row.pricePerLitre.toNumber(),
+        totalAmount: typeof row.totalAmount === "number" ? row.totalAmount : row.totalAmount.toNumber(),
+        fat: typeof row.fat === "number" ? row.fat : row.fat.toNumber(),
+      };
+    });
 
   return {
     summary: {
