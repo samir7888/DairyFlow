@@ -48,10 +48,10 @@ export default async function HomePage() {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
           <Link
-            href="/sign-up"
+            href="/dashboard"
             className="w-full sm:w-auto px-8 py-3.5 text-base font-semibold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-xl shadow-emerald-950/80 transition-all flex items-center justify-center gap-2"
           >
-            Start Digital Logbook <ArrowRight className="w-5 h-5" />
+            Dashboard <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/sign-in"
