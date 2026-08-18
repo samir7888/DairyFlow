@@ -2,11 +2,11 @@
 
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
-import { prisma } from "@/lib/prisma";
 import { milkSaleSchema, MilkSaleFormValues } from "@/lib/validations/milk-sale";
 import { DateRangePreset, getDateRangeBounds } from "@/lib/utils";
 import { isClerkConfigured } from "@/lib/clerk-config";
 import Decimal from "decimal.js";
+import prisma from "@/lib/prisma";
 
 export type ActionResult<T = unknown> = {
   success: boolean;
