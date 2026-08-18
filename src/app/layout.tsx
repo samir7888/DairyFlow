@@ -52,19 +52,28 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: baseUrl,
-    siteName: "DairyFlow",
     title: "DairyFlow | Milk Dairy Sales Tracker & Analytics",
     description:
-      "Digitally record daily milk sales, track total revenue in NPR, and monitor fat percentage trends for farmers and dairy sellers.",
+      "Track daily milk sales, revenue, litres, price and milk fat with simple analytics.",
+    url: "https://dairyflow.basnetsameer.com.np",
+    siteName: "DairyFlow",
+    type: "website",
+    images: [
+      {
+        url: "https://dairyflow.basnetsameer.com.np/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "DairyFlow - Milk Dairy Sales Tracker & Analytics",
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "DairyFlow | Milk Dairy Sales Tracker & Analytics",
     description:
-      "Digitally record daily milk sales, track total revenue in NPR, and monitor fat percentage trends for farmers and dairy sellers.",
+      "Track daily milk sales, revenue, litres, price and milk fat with simple analytics.",
+    images: ["https://dairyflow.basnetsameer.com.np/opengraph-image.png"],
   },
 };
 
