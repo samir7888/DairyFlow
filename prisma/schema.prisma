@@ -1,0 +1,25 @@
+// Prisma 7 Schema for Milk Dairy Sales Tracker
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model MilkSale {
+  id            String   @id @default(cuid())
+  userId        String
+  date          DateTime
+  litres        Decimal  @db.Decimal(10, 2)
+  pricePerLitre Decimal  @db.Decimal(10, 2)
+  totalAmount   Decimal  @db.Decimal(12, 2)
+  fat           Decimal  @db.Decimal(5, 2)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([userId, date])
+}
