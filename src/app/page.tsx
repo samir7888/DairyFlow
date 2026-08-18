@@ -1,18 +1,8 @@
 import Link from "next/link";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { Milk, ArrowRight, TrendingUp, ShieldCheck, BarChart3 } from "lucide-react";
 
 export default async function HomePage() {
-  const pubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-  const isClerkReady = pubKey && !pubKey.includes("placeholder") && pubKey.length >= 30;
 
-  if (isClerkReady) {
-    const { userId } = await auth();
-    if (userId) {
-      redirect("/dashboard");
-    }
-  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">

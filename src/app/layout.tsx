@@ -11,7 +11,7 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://dairyflow.app";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://dairyflow.basnetsameer.com.np";
 
 export const viewport: Viewport = {
   themeColor: "#15803d",
@@ -127,7 +127,15 @@ export default function RootLayout({
   );
 
   if (isConfigured && pubKey) {
-    return <ClerkProvider publishableKey={pubKey}>{bodyContent}</ClerkProvider>;
+    return (
+      <ClerkProvider
+        publishableKey={pubKey}
+        signInFallbackRedirectUrl="/dashboard"
+        signUpFallbackRedirectUrl="/dashboard"
+      >
+        {bodyContent}
+      </ClerkProvider>
+    );
   }
 
   return bodyContent;
