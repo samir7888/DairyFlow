@@ -4,7 +4,7 @@ import { useTransition } from "react";
 import { toast } from "sonner";
 import { AlertTriangle, Trash2, X } from "lucide-react";
 import { deleteMilkSaleAction } from "@/lib/actions/milk-sales";
-import { formatCurrency, formatDate, formatLitres } from "@/lib/utils";
+import { formatCurrency, formatDate, formatLitres, formatNepaliDate } from "@/lib/utils";
 
 interface DeleteSaleDialogProps {
   isOpen: boolean;
@@ -69,6 +69,10 @@ export function DeleteSaleDialog({
           <div className="flex justify-between">
             <span className="text-slate-500">Date:</span>
             <span className="font-semibold text-slate-900">{formatDate(record.date)}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-slate-500">Nepali Date (BS):</span>
+            <span className="font-semibold text-slate-900">{formatNepaliDate(record.date)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">Milk Volume:</span>

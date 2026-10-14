@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import Decimal from "decimal.js";
+import NepaliDate from "nepali-date-converter";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -64,6 +65,58 @@ export function formatDate(date: Date | string): string {
     day: "numeric",
     year: "numeric",
   });
+}
+
+/**
+ * Converts a stored sale date (AD) to a Bikram Sambat (BS) date.
+ *
+ * Sale dates are saved as `new Date("YYYY-MM-DD")`, i.e. UTC midnight, so the
+ * calendar day is read from the UTC parts. This keeps the BS date identical to
+ * the date the user picked regardless of the server / browser timezone.
+ * Returns null for invalid or out-of-range dates.
+ */
+export function toNepaliDate(date: Date | string | null | undefined): NepaliDate | null {
+  if (!date) return null;
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return null;
+  try {
+    return NepaliDate.fromAD(new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  } catch {
+    return null; // outside the supported BS calendar range
+  }
+}
+
+/**
+ * Nepali date in Devanagari for display (e.g., २ भाद्र २०८३)
+ */
+export function formatNepaliDate(date: Date | string | null | undefined): string {
+  const n = toNepaliDate(date);
+  if (!n) return "—";
+  return n.format("D MMMM YYYY", "np");
+}
+
+/**
+ * Nepali date as plain ISO-style digits (e.g., 2083-05-02), used for CSV export
+ */
+export function formatNepaliDateISO(date: Date | string | null | undefined): string {
+  const n = toNepaliDate(date);
+  if (!n) return "";
+  return n.format("YYYY-MM-DD");
+}
+
+/**
+ * All searchable text forms of the Nepali date (Devanagari, romanised month, ISO)
+ */
+export function nepaliDateSearchText(date: Date | string | null | undefined): string {
+  const n = toNepaliDate(date);
+  if (!n) return "";
+  return [
+    n.format("D MMMM YYYY", "np"),
+    n.format("D MMMM YYYY"),
+    n.format("YYYY-MM-DD"),
+  ]
+    .join(" ")
+    .toLowerCase();
 }
 
 /**
