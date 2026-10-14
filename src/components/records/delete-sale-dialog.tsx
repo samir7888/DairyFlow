@@ -76,7 +76,7 @@ export function DeleteSaleDialog({
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">Milk Volume:</span>
-            <span className="font-semibold text-emerald-800">{formatLitres(record.litres)}</span>
+            <span className="font-semibold text-brand-800">{formatLitres(record.litres)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">Total Amount:</span>

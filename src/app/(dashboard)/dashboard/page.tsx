@@ -37,11 +37,9 @@ export default async function DashboardPage({ searchParams }: DashboardPageProps
       {/* Page Header */}
       <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-            Milk Sales Dashboard
-          </h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Overview of daily litres sold, total revenue, and fat percentage
+          <h1 className="text-2xl font-bold tracking-tight text-ink">Milk sales</h1>
+          <p className="mt-1 text-sm text-brand-500">
+            Litres sold, earnings and fat percentage for the period you pick.
           </p>
         </div>
       </div>  

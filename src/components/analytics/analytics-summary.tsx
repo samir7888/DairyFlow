@@ -20,28 +20,28 @@ export function AnalyticsSummary({ summary }: AnalyticsSummaryProps) {
       value: formatLitres(summary.totalLitres),
       subtitle: `${summary.sellingDaysCount} active selling days`,
       icon: Milk,
-      bgColor: "bg-emerald-50 text-emerald-700 border-emerald-200/80",
+      bgColor: "bg-brand-50 text-brand-700 border-brand-200/80",
     },
     {
       title: "Total Revenue Generated",
       value: formatCurrency(summary.totalEarnings),
       subtitle: "Gross income earned in NPR",
       icon: Banknote,
-      bgColor: "bg-teal-50 text-teal-700 border-teal-200/80",
+      bgColor: "bg-brand-50 text-brand-700 border-brand-200/80",
     },
     {
       title: "Average Daily Volume",
       value: formatLitres(summary.avgDailyMilk),
       subtitle: "Average per active selling day",
       icon: Calendar,
-      bgColor: "bg-green-50 text-green-700 border-green-200/80",
+      bgColor: "bg-marigold-50 text-marigold-700 border-marigold-100/80",
     },
     {
       title: "Average Fat Content",
       value: formatPercentage(summary.avgFat),
       subtitle: "Quality measurement average",
       icon: Percent,
-      bgColor: "bg-emerald-50 text-emerald-800 border-emerald-200/80",
+      bgColor: "bg-brand-50 text-brand-800 border-brand-200/80",
     },
     {
       title: "Highest Single Volume Sale",
@@ -66,10 +66,10 @@ export function AnalyticsSummary({ summary }: AnalyticsSummaryProps) {
         return (
           <div
             key={i}
-            className="rounded-2xl bg-white p-5 shadow-xs border border-slate-200/80 hover:border-emerald-300 transition-all"
+            className="rounded-2xl bg-white p-5 shadow-xs border border-slate-200/80 hover:border-brand-300 transition-all"
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <span className="text-xs font-semibold text-slate-500">
                 {c.title}
               </span>
               <div className={`flex h-10 w-10 items-center justify-center rounded-xl border ${c.bgColor}`}>

@@ -141,8 +141,8 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
 
         {/* Date Field */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-            Invoice Date (मिति) <span className="text-emerald-600">*</span>
+          <label className="block text-xs font-semibold text-slate-700 mb-2">
+            Invoice Date (मिति) <span className="text-brand-600">*</span>
           </label>
           {/* Pick in Nepali (BS); `date` state holds the English (AD) value saved to the DB */}
           <NepaliDatePicker value={date} onChange={setDate} hasError={!!errors.date} />
@@ -152,12 +152,12 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Milk Quantity Field */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-              Milk Quantity (Litres) <span className="text-emerald-600">*</span>
+            <label className="block text-xs font-semibold text-slate-700 mb-2">
+              Milk Quantity (Litres) <span className="text-brand-600">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Milk className="h-4 w-4 text-emerald-600" />
+                <Milk className="h-4 w-4 text-brand-600" />
               </div>
               <input
                 type="number"
@@ -166,7 +166,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
                 placeholder="e.g. 18.50"
                 value={litres}
                 onChange={(e) => setLitres(e.target.value)}
-                className="w-full pl-10 pr-12 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
+                className="w-full pl-10 pr-12 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all"
                 required
               />
               <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">
@@ -178,12 +178,12 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
 
           {/* Price per Litre Field */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-              Price per Litre (NPR) <span className="text-emerald-600">*</span>
+            <label className="block text-xs font-semibold text-slate-700 mb-2">
+              Price per Litre (NPR) <span className="text-brand-600">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Tag className="h-4 w-4 text-emerald-600" />
+                <Tag className="h-4 w-4 text-brand-600" />
               </div>
               <input
                 type="number"
@@ -192,7 +192,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
                 placeholder="e.g. 65.00"
                 value={pricePerLitre}
                 onChange={(e) => setPricePerLitre(e.target.value)}
-                className="w-full pl-10 pr-14 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
+                className="w-full pl-10 pr-14 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all"
                 required
               />
               <span className="absolute inset-y-0 right-0 pr-3 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">
@@ -207,14 +207,14 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
           {/* Total Amount Field */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
-                Total Amount (NPR) <span className="text-emerald-600">*</span>
+              <label className="block text-xs font-semibold text-slate-700">
+                Total Amount (NPR) <span className="text-brand-600">*</span>
               </label>
               {isTotalManuallyEdited && (
                 <button
                   type="button"
                   onClick={handleRecalculateTotal}
-                  className="text-[11px] text-emerald-700 hover:underline flex items-center gap-1"
+                  className="text-[11px] text-brand-700 hover:underline flex items-center gap-1"
                 >
                   <RefreshCw className="h-3 w-3" /> Auto-recalculate
                 </button>
@@ -222,7 +222,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
             </div>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Banknote className="h-4 w-4 text-emerald-600" />
+                <Banknote className="h-4 w-4 text-brand-600" />
               </div>
               <input
                 type="number"
@@ -234,7 +234,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
                   setTotalAmount(e.target.value);
                   setIsTotalManuallyEdited(true);
                 }}
-                className="w-full pl-10 pr-14 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 font-semibold focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
+                className="w-full pl-10 pr-14 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 font-semibold focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all"
                 required
               />
               <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">
@@ -249,12 +249,12 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
 
           {/* Milk Fat Field */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
-              Milk Fat (%) <span className="text-emerald-600">*</span>
+            <label className="block text-xs font-semibold text-slate-700 mb-2">
+              Milk Fat (%) <span className="text-brand-600">*</span>
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                <Percent className="h-4 w-4 text-emerald-600" />
+                <Percent className="h-4 w-4 text-brand-600" />
               </div>
               <input
                 type="number"
@@ -264,7 +264,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
                 placeholder="e.g. 4.2"
                 value={fat}
                 onChange={(e) => setFat(e.target.value)}
-                className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
+                className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all"
                 required
               />
               <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-xs font-semibold text-slate-400 pointer-events-none">
@@ -277,15 +277,15 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
 
         {/* Live Calculation Preview Banner */}
         {litres && pricePerLitre && (
-          <div className="rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 p-4 border border-emerald-100 flex items-center justify-between text-xs">
+          <div className="rounded-xl bg-brand-50 p-4 border border-brand-100 flex items-center justify-between text-xs">
             <div className="space-y-0.5">
-              <div className="font-semibold text-emerald-950">Calculated Invoice Summary</div>
+              <div className="font-semibold text-brand-950">Calculated Invoice Summary</div>
               <div className="text-slate-600">
                 {litres} Litres × NPR {pricePerLitre}/L @ {fat || "0"}% Fat
               </div>
             </div>
             <div className="text-right">
-              <div className="text-base font-bold text-emerald-900">
+              <div className="text-base font-bold text-brand-900">
                 {formatCurrency(parseFloat(totalAmount) || 0)}
               </div>
             </div>
@@ -306,7 +306,7 @@ export function MilkSaleForm({ initialData, isEditing = false }: MilkSaleFormPro
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-emerald-950/20 hover:bg-emerald-500 focus:ring-2 focus:ring-emerald-500/30 transition-all disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-brand-950/20 hover:bg-brand-500 focus:ring-2 focus:ring-brand-500/30 transition-all disabled:opacity-50"
           >
             <Save className="h-4 w-4" />
             <span>{isPending ? "Saving Record..." : isEditing ? "Update Record" : "Save Record"}</span>

@@ -53,27 +53,27 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
         return {
           label: "Milk Sold (Litres)",
           values: data.map((d) => d.litres),
-          borderColor: "#059669",
-          backgroundColor: "rgba(16, 185, 129, 0.12)",
-          pointBackgroundColor: "#047857",
+          borderColor: "#2f4f7a",
+          backgroundColor: "rgba(47, 79, 122, 0.12)",
+          pointBackgroundColor: "#1b2f4b",
           unitFormatter: (val: number) => formatLitres(val),
         };
       case "earnings":
         return {
           label: "Daily Earnings (NPR)",
           values: data.map((d) => d.earnings),
-          borderColor: "#0d9488",
-          backgroundColor: "rgba(20, 184, 166, 0.12)",
-          pointBackgroundColor: "#0f766e",
+          borderColor: "#e8a800",
+          backgroundColor: "rgba(232, 168, 0, 0.14)",
+          pointBackgroundColor: "#8f6300",
           unitFormatter: (val: number) => formatCurrency(val),
         };
       case "avgFat":
         return {
           label: "Average Milk Fat (%)",
           values: data.map((d) => d.avgFat),
-          borderColor: "#16a34a",
-          backgroundColor: "rgba(34, 197, 94, 0.12)",
-          pointBackgroundColor: "#15803d",
+          borderColor: "#b5334f",
+          backgroundColor: "rgba(181, 51, 79, 0.10)",
+          pointBackgroundColor: "#8f2a40",
           unitFormatter: (val: number) => formatPercentage(val),
         };
     }
@@ -109,9 +109,9 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
         display: false,
       },
       tooltip: {
-        backgroundColor: "#0f172a",
+        backgroundColor: "#14233a",
         titleColor: "#f8fafc",
-        bodyColor: "#34d399",
+        bodyColor: "#f5c64b",
         padding: 12,
         cornerRadius: 10,
         displayColors: false,
@@ -160,7 +160,7 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
           <div className="flex items-center gap-2 text-slate-900 font-bold text-lg">
-            <LineChart className="h-5 w-5 text-emerald-600" />
+            <LineChart className="h-5 w-5 text-brand-600" />
             <span>Milk Sales Over Time</span>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -174,11 +174,11 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
             onClick={() => setActiveMetric("litres")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
               activeMetric === "litres"
-                ? "bg-white text-emerald-800 shadow-xs"
+                ? "bg-white text-brand-800 shadow-xs"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            <Milk className=" hidden md:flex h-3.5 w-3.5 text-emerald-600" />
+            <Milk className=" hidden md:flex h-3.5 w-3.5 text-brand-600" />
             <span>Milk (Litres)</span>
           </button>
 
@@ -186,11 +186,11 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
             onClick={() => setActiveMetric("earnings")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
               activeMetric === "earnings"
-                ? "bg-white text-teal-800 shadow-xs"
+                ? "bg-white text-brand-800 shadow-xs"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            <Banknote className="hidden md:flex h-3.5 w-3.5 text-teal-600" />
+            <Banknote className="hidden md:flex h-3.5 w-3.5 text-brand-600" />
             <span>Earnings (NPR)</span>
           </button>
 
@@ -198,11 +198,11 @@ export function DashboardChartCard({ data }: DashboardChartCardProps) {
             onClick={() => setActiveMetric("avgFat")}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
               activeMetric === "avgFat"
-                ? "bg-white text-green-800 shadow-xs"
+                ? "bg-white text-marigold-700 shadow-xs"
                 : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            <Percent className="hidden md:flex h-3.5 w-3.5 text-green-600" />
+            <Percent className="hidden md:flex h-3.5 w-3.5 text-marigold-700" />
             <span>Avg Fat (%)</span>
           </button>
         </div>

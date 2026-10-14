@@ -122,11 +122,11 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
         aria-haspopup="dialog"
         aria-expanded={open}
         className={cn(
-          "w-full flex items-center gap-2.5 pl-3.5 pr-4 py-2.5 rounded-xl border bg-white text-left text-sm focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all",
+          "w-full flex items-center gap-2.5 pl-3.5 pr-4 py-2.5 rounded-xl border bg-white text-left text-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all",
           hasError ? "border-red-300" : "border-slate-200"
         )}
       >
-        <Calendar className="h-4 w-4 text-emerald-600 shrink-0" />
+        <Calendar className="h-4 w-4 text-brand-600 shrink-0" />
         <span className={selected ? "text-slate-900" : "text-slate-400"}>
           {selected ? formatNepaliDate(value) : "मिति छान्नुहोस् (Select date)"}
         </span>
@@ -143,7 +143,7 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
             <button
               type="button"
               onClick={() => shiftMonth(-1)}
-              className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-emerald-700 transition-colors"
+              className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-700 transition-colors"
               aria-label="Previous month"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -153,7 +153,7 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
               <select
                 value={view.month}
                 onChange={(e) => setView((v) => ({ ...v, month: Number(e.target.value) }))}
-                className="rounded-lg border border-slate-200 bg-white px-1.5 py-1 text-sm font-semibold text-slate-900 focus:border-emerald-500 outline-hidden"
+                className="rounded-lg border border-slate-200 bg-white px-1.5 py-1 text-sm font-semibold text-slate-900 focus:border-brand-500 outline-hidden"
                 aria-label="Month"
               >
                 {NEPALI_MONTH_NAMES.map((name, i) => (
@@ -165,7 +165,7 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
               <select
                 value={view.year}
                 onChange={(e) => setView((v) => ({ ...v, year: Number(e.target.value) }))}
-                className="rounded-lg border border-slate-200 bg-white px-1.5 py-1 text-sm font-semibold text-slate-900 focus:border-emerald-500 outline-hidden"
+                className="rounded-lg border border-slate-200 bg-white px-1.5 py-1 text-sm font-semibold text-slate-900 focus:border-brand-500 outline-hidden"
                 aria-label="Year"
               >
                 {YEARS.map((y) => (
@@ -179,7 +179,7 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
             <button
               type="button"
               onClick={() => shiftMonth(1)}
-              className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-emerald-700 transition-colors"
+              className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-700 transition-colors"
               aria-label="Next month"
             >
               <ChevronRight className="h-4 w-4" />
@@ -210,9 +210,9 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
                   className={cn(
                     "h-9 rounded-lg text-sm transition-colors",
                     isSelected(day)
-                      ? "bg-emerald-600 font-bold text-white"
+                      ? "bg-brand-600 font-bold text-white"
                       : isToday(day)
-                        ? "border border-emerald-500 font-semibold text-emerald-700 hover:bg-emerald-50"
+                        ? "border border-brand-500 font-semibold text-brand-700 hover:bg-brand-50"
                         : "text-slate-700 hover:bg-slate-100",
                     !isSelected(day) && (startWeekday + day - 1) % 7 === 6 && "text-red-500"
                   )}
@@ -227,7 +227,7 @@ export function NepaliDatePicker({ value, onChange, id, hasError }: NepaliDatePi
             <button
               type="button"
               onClick={pickToday}
-              className="rounded-lg px-2.5 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-50 transition-colors"
+              className="rounded-lg px-2.5 py-1.5 text-xs font-semibold text-brand-700 hover:bg-brand-50 transition-colors"
             >
               आज (Today)
             </button>
