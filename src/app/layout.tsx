@@ -1,20 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Mukta } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import { KeyRound } from "lucide-react";
 import { isClerkConfigured } from "@/lib/clerk-config";
 import "./globals.css";
 
-const inter = Inter({
+// Headlines: Bricolage Grotesque. Body: Mukta, which also covers Devanagari
+// so Nepali dates and labels render in the same family.
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-display-face",
+});
+
+const body = Mukta({
+  subsets: ["latin", "devanagari"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body-face",
 });
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://dairyflow.basnetsameer.com.np";
 
 export const viewport: Viewport = {
-  themeColor: "#15803d",
+  themeColor: "#1B2F4B",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -210,7 +218,7 @@ export default function RootLayout({
   };
 
   const bodyContent = (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
       <head>
         <script
           type="application/ld+json"
@@ -225,7 +233,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 font-sans">
+      <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
         {!isConfigured && (
           <div className="bg-amber-500 text-slate-950 px-4 py-2 text-xs font-semibold flex items-center justify-center gap-2 border-b border-amber-600 shadow-xs z-50">
             <KeyRound className="h-4 w-4 shrink-0" />

@@ -15,12 +15,12 @@ function ClerkUserMenu() {
   return (
     <div className="flex items-center gap-3">
       <p className="text-xs text-slate-500 hidden sm:block">
-        Welcome back, <span className="font-medium text-emerald-800">{user?.firstName || "Farmer"}</span> 👋
+        नमस्ते, <span className="font-semibold text-ink">{user?.firstName || "Farmer"}</span>
       </p>
       <UserButton
         appearance={{
           elements: {
-            avatarBox: "w-9 h-9 border-2 border-emerald-500/30 hover:border-emerald-500 transition-colors",
+            avatarBox: "w-9 h-9 border-2 border-brand-500/30 hover:border-brand-500 transition-colors",
           },
         }}
       />
@@ -32,10 +32,10 @@ function LocalDevUserBadge() {
   return (
     <div className="flex items-center gap-2">
       <p className="text-xs text-slate-500 hidden sm:block">
-        Welcome back, <span className="font-medium text-emerald-800">Dairy Seller</span> 👋
+        नमस्ते, <span className="font-semibold text-ink">Dairy Seller</span>
       </p>
-      <div className="flex items-center gap-1.5 rounded-xl bg-emerald-50 px-3 py-1.5 border border-emerald-200 text-xs font-semibold text-emerald-800">
-        <User className="h-4 w-4 text-emerald-600" />
+      <div className="flex items-center gap-1.5 rounded-xl bg-brand-50 px-3 py-1.5 border border-brand-200 text-xs font-semibold text-brand-800">
+        <User className="h-4 w-4 text-brand-600" />
         <span>Local Seller</span>
       </div>
     </div>
@@ -63,7 +63,7 @@ export function Header({ onMobileMenuToggle, title = "Dashboard" }: HeaderProps)
       <div className="flex items-center gap-3">
         <Link
           href="/records/new"
-          className="hidden sm:inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-500 transition-colors"
+          className="hidden sm:inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-brand-500 transition-colors"
         >
           <Plus className="h-4 w-4" />
           <span>Add Record</span>

@@ -107,7 +107,7 @@ export function RecordsTable({
             placeholder="Search by date (AD/BS) or volume..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-xs text-slate-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
+            className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-xs text-slate-900 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition-all"
           />
         </div>
 
@@ -119,7 +119,7 @@ export function RecordsTable({
             className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-700 shadow-xs hover:bg-slate-50 transition-colors"
             title="Export filtered records to a CSV file"
           >
-            <Download className="h-4 w-4 text-emerald-600" />
+            <Download className="h-4 w-4 text-brand-600" />
             <span>Export CSV</span>
           </button>
 
@@ -130,14 +130,14 @@ export function RecordsTable({
             className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-semibold text-slate-700 shadow-xs hover:bg-slate-50 transition-colors"
             title="Import records from a CSV file"
           >
-            <Upload className="h-4 w-4 text-emerald-600" />
+            <Upload className="h-4 w-4 text-brand-600" />
             <span>Import CSV</span>
           </button>
 
           {/* Record New Sale Button */}
           <Link
             href="/records/new"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-emerald-500 transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-brand-500 transition-colors"
           >
             <Plus className="h-4 w-4" />
             <span>Record New Sale</span>
@@ -149,7 +149,7 @@ export function RecordsTable({
       <div className="rounded-2xl bg-white shadow-xs border border-slate-200/80 overflow-hidden mb-6">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-slate-600">
-            <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 tracking-wider border-b border-slate-200/60">
+            <thead className="bg-slate-50 text-xs font-semibold text-slate-500 border-b border-slate-200/60">
               <tr>
                 <th className="px-6 py-3.5">Date</th>
                 <th className="px-6 py-3.5">Nepali Date (BS)</th>
@@ -170,7 +170,7 @@ export function RecordsTable({
                     <td className="whitespace-nowrap px-6 py-4 font-medium text-slate-900">
                       {formatNepaliDate(r.date)}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 font-semibold text-emerald-800">
+                    <td className="whitespace-nowrap px-6 py-4 font-semibold text-brand-800">
                       {formatLitres(r.litres)}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-slate-600">
@@ -180,7 +180,7 @@ export function RecordsTable({
                       {formatCurrency(r.totalAmount)}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
-                      <span className="inline-flex items-center rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 border border-emerald-200/60">
+                      <span className="inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-xs font-semibold text-brand-700 border border-brand-200/60">
                         {formatPercentage(r.fat)}
                       </span>
                     </td>
@@ -188,7 +188,7 @@ export function RecordsTable({
                       <div className="inline-flex items-center gap-1.5">
                         <Link
                           href={`/records/${r.id}/edit`}
-                          className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-emerald-700 transition-colors"
+                          className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-700 transition-colors"
                           title="Edit record"
                         >
                           <Edit2 className="h-4 w-4" />

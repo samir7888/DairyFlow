@@ -1,4 +1,3 @@
-import { Milk, Banknote, Tag, Percent } from "lucide-react";
 import { formatCurrency, formatLitres, formatPercentage } from "@/lib/utils";
 
 interface SummaryCardsProps {
@@ -16,68 +15,32 @@ export function SummaryCards({
   avgFat,
   recordCount,
 }: SummaryCardsProps) {
-  const cards = [
-    {
-      title: "Total Milk Sold",
-      value: formatLitres(totalLitres),
-      subtitle: `${recordCount} recorded entries`,
-      icon: Milk,
-      iconBg: "bg-emerald-50 text-emerald-600 border-emerald-200/80",
-    },
-    {
-      title: "Total Earnings",
-      value: formatCurrency(totalEarnings),
-      subtitle: "Gross income in NPR",
-      icon: Banknote,
-      iconBg: "bg-teal-50 text-teal-600 border-teal-200/80",
-    },
-    {
-      title: "Average Milk Price",
-      value: `${formatCurrency(avgPricePerLitre)}/L`,
-      subtitle: "Average revenue per litre",
-      icon: Tag,
-      iconBg: "bg-green-50 text-green-600 border-green-200/80",
-    },
-    {
-      title: "Average Milk Fat",
-      value: formatPercentage(avgFat),
-      subtitle: "Fat content quality average",
-      icon: Percent,
-      iconBg: "bg-emerald-50/80 text-emerald-700 border-emerald-200/80",
-    },
+  const secondary = [
+    { label: "Milk sold", value: formatLitres(totalLitres), note: `${recordCount} ${recordCount === 1 ? "entry" : "entries"}` },
+    { label: "Average price", value: `${formatCurrency(avgPricePerLitre)}/L`, note: "per litre" },
+    { label: "Average fat", value: formatPercentage(avgFat), note: "milk fat" },
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-      {cards.map((card, idx) => {
-        const Icon = card.icon;
-        return (
-          <div
-            key={idx}
-            className="group relative flex flex-col justify-between rounded-2xl bg-white p-5 shadow-xs border border-slate-200/80 hover:border-emerald-300 transition-all duration-200"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                {card.title}
-              </span>
-              <div
-                className={`flex h-10 w-10 items-center justify-center rounded-xl border ${card.iconBg}`}
-              >
-                <Icon className="h-5 w-5" />
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <div className="text-2xl font-bold text-slate-900 tracking-tight">
-                {card.value}
-              </div>
-              <p className="mt-1 text-xs text-slate-500 font-medium">
-                {card.subtitle}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+    <section
+      aria-label="Summary for the selected period"
+      className="mb-6 grid divide-y divide-brand-100 overflow-hidden rounded-lg border border-brand-200 bg-white lg:grid-cols-[1.8fr_1fr_1fr_1fr] lg:divide-x lg:divide-y-0"
+    >
+      <div className="p-5 lg:p-6">
+        <div className="text-sm font-medium text-brand-500">Total earnings</div>
+        <div className="mt-2">
+          <span className="whitespace-nowrap rounded-sm bg-marigold-300/60 px-2 py-0.5 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+            {formatCurrency(totalEarnings)}
+          </span>
+        </div>
+      </div>
+      {secondary.map((s) => (
+        <div key={s.label} className="flex items-baseline justify-between gap-4 px-5 py-3.5 lg:block lg:p-6">
+          <div className="text-sm font-medium text-brand-500">{s.label}</div>
+          <div className="font-display text-xl font-bold tracking-tight text-ink lg:mt-2 lg:text-2xl">{s.value}</div>
+          <div className="hidden text-sm text-brand-500 lg:mt-1 lg:block">{s.note}</div>
+        </div>
+      ))}
+    </section>
   );
 }

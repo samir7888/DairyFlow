@@ -81,7 +81,7 @@ export function DateRangePicker({
   return (
     <div className="flex flex-col md:flex-row flex-wrap md:items-center justify-between gap-3 rounded-2xl bg-white p-3 shadow-xs border border-slate-200/80 mb-6">
       <div className="flex items-center gap-2 text-slate-700 text-xs font-semibold px-2">
-        <Filter className="h-4 w-4 text-emerald-600" />
+        <Filter className="h-4 w-4 text-brand-600" />
         <span>Date Range:</span>
       </div>
 
@@ -93,7 +93,7 @@ export function DateRangePicker({
             disabled={isPending}
             className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
               preset === p.value
-                ? "bg-emerald-600 text-white shadow-xs"
+                ? "bg-brand-600 text-white shadow-xs"
                 : "bg-slate-100/80 text-slate-600 hover:bg-slate-200/80"
             }`}
           >
@@ -113,7 +113,7 @@ export function DateRangePicker({
                 setFrom(e.target.value);
                 applyFilter("custom", e.target.value, to);
               }}
-              className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 focus:border-emerald-500 focus:ring-emerald-500"
+              className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 focus:border-brand-500 focus:ring-brand-500"
             />
           </div>
           <div className="flex items-center gap-1">
@@ -125,7 +125,7 @@ export function DateRangePicker({
                 setTo(e.target.value);
                 applyFilter("custom", from, e.target.value);
               }}
-              className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 focus:border-emerald-500 focus:ring-emerald-500"
+              className="rounded-md border border-slate-200 px-2 py-1 text-xs text-slate-700 focus:border-brand-500 focus:ring-brand-500"
             />
           </div>
         </div>

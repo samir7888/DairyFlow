@@ -59,9 +59,9 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
         fill: true,
         label: "Milk Sold (L)",
         data: series.map((s) => s.litres),
-        borderColor: "#059669",
-        backgroundColor: "rgba(5, 150, 105, 0.12)",
-        pointBackgroundColor: "#047857",
+        borderColor: "#2f4f7a",
+        backgroundColor: "rgba(47, 79, 122, 0.12)",
+        pointBackgroundColor: "#1b2f4b",
         pointBorderColor: "#ffffff",
         pointBorderWidth: 2,
         pointRadius: 4,
@@ -78,9 +78,9 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
         fill: true,
         label: "Total Earnings (NPR)",
         data: series.map((s) => s.earnings),
-        borderColor: "#0d9488",
-        backgroundColor: "rgba(13, 148, 136, 0.12)",
-        pointBackgroundColor: "#0f766e",
+        borderColor: "#e8a800",
+        backgroundColor: "rgba(232, 168, 0, 0.14)",
+        pointBackgroundColor: "#8f6300",
         pointBorderColor: "#ffffff",
         pointBorderWidth: 2,
         pointRadius: 4,
@@ -97,9 +97,9 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
         fill: true,
         label: "Milk Fat (%)",
         data: series.map((s) => s.fat),
-        borderColor: "#16a34a",
-        backgroundColor: "rgba(22, 163, 74, 0.12)",
-        pointBackgroundColor: "#15803d",
+        borderColor: "#b5334f",
+        backgroundColor: "rgba(181, 51, 79, 0.10)",
+        pointBackgroundColor: "#8f2a40",
         pointBorderColor: "#ffffff",
         pointBorderWidth: 2,
         pointRadius: 4,
@@ -114,9 +114,9 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: "#0f172a",
+        backgroundColor: "#14233a",
         titleColor: "#f8fafc",
-        bodyColor: "#34d399",
+        bodyColor: "#f5c64b",
         padding: 12,
         cornerRadius: 10,
         callbacks: {
@@ -145,7 +145,7 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
       {/* Chart 1: Milk Quantity */}
       <div className="rounded-2xl bg-white p-6 shadow-xs border border-slate-200/80">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-600 border border-brand-100">
             <Milk className="h-4 w-4" />
           </div>
           <div>
@@ -161,7 +161,7 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
       {/* Chart 2: Daily Earnings */}
       <div className="rounded-2xl bg-white p-6 shadow-xs border border-slate-200/80">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-50 text-teal-600 border border-teal-100">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-600 border border-brand-100">
             <Banknote className="h-4 w-4" />
           </div>
           <div>
@@ -177,7 +177,7 @@ export function AnalyticsCharts({ series }: AnalyticsChartsProps) {
       {/* Chart 3: Milk Fat Percentage */}
       <div className="rounded-2xl bg-white p-6 shadow-xs border border-slate-200/80">
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-50 text-green-600 border border-green-100">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-marigold-50 text-marigold-700 border border-marigold-100">
             <Percent className="h-4 w-4" />
           </div>
           <div>
