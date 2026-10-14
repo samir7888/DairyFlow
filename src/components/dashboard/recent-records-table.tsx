@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Plus, FileText, Milk } from "lucide-react";
-import { formatCurrency, formatDate, formatLitres, formatPercentage } from "@/lib/utils";
+import { formatCurrency, formatDate, formatLitres, formatNepaliDate, formatPercentage } from "@/lib/utils";
 
 interface MilkSaleRecord {
   id: string;
@@ -62,6 +62,7 @@ export function RecentRecordsTable({ records }: RecentRecordsTableProps) {
           <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 tracking-wider border-b border-slate-200/60">
             <tr>
               <th className="px-6 py-3">Date</th>
+              <th className="px-6 py-3">Nepali Date (BS)</th>
               <th className="px-6 py-3">Milk Sold</th>
               <th className="px-6 py-3">Price / L</th>
               <th className="px-6 py-3">Total Amount</th>
@@ -73,6 +74,9 @@ export function RecentRecordsTable({ records }: RecentRecordsTableProps) {
               <tr key={r.id} className="hover:bg-slate-50/70 transition-colors">
                 <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
                   {formatDate(r.date)}
+                </td>
+                <td className="whitespace-nowrap px-6 py-3.5 font-medium text-slate-900">
+                  {formatNepaliDate(r.date)}
                 </td>
                 <td className="whitespace-nowrap px-6 py-3.5 font-semibold text-emerald-800">
                   {formatLitres(r.litres)}

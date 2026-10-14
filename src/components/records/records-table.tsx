@@ -5,7 +5,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Edit2, Trash2, Plus, FileSpreadsheet, ChevronLeft, ChevronRight, Search, Download, Upload } from "lucide-react";
-import { formatCurrency, formatDate, formatLitres, formatPercentage } from "@/lib/utils";
+import {
+  formatCurrency,
+  formatDate,
+  formatLitres,
+  formatNepaliDate,
+  formatNepaliDateISO,
+  formatPercentage,
+  nepaliDateSearchText,
+} from "@/lib/utils";
 import { DeleteSaleDialog } from "./delete-sale-dialog";
 import { CSVImportDialog } from "./csv-import-dialog";
 
@@ -40,7 +48,7 @@ export function RecordsTable({
   const filteredItems = items.filter((r) => {
     if (!searchTerm) return true;
     const term = searchTerm.toLowerCase();
-    const dateStr = formatDate(r.date).toLowerCase();
+    const dateStr = `${formatDate(r.date).toLowerCase()} ${nepaliDateSearchText(r.date)}`;
     const litresStr = String(r.litres);
     const totalStr = String(r.totalAmount);
     return dateStr.includes(term) || litresStr.includes(term) || totalStr.includes(term);
@@ -59,12 +67,13 @@ export function RecordsTable({
       return;
     }
 
-    const headers = ["Date", "Milk Quantity (L)", "Price per Litre (NPR)", "Total Amount (NPR)", "Milk Fat (%)"];
+    const headers = ["Date", "Nepali Date (BS)", "Milk Quantity (L)", "Price per Litre (NPR)", "Total Amount (NPR)", "Milk Fat (%)"];
     
     const rows = filteredItems.map((r) => {
       const dateStr = new Date(r.date).toISOString().split("T")[0];
       return [
         `"${dateStr}"`,
+        `"${formatNepaliDateISO(r.date)}"`,
         r.litres,
         r.pricePerLitre,
         r.totalAmount,
@@ -95,7 +104,7 @@ export function RecordsTable({
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             type="text"
-            placeholder="Search records by date or volume..."
+            placeholder="Search by date (AD/BS) or volume..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-xs text-slate-900 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-hidden transition-all"
@@ -143,6 +152,7 @@ export function RecordsTable({
             <thead className="bg-slate-50 text-xs font-semibold uppercase text-slate-500 tracking-wider border-b border-slate-200/60">
               <tr>
                 <th className="px-6 py-3.5">Date</th>
+                <th className="px-6 py-3.5">Nepali Date (BS)</th>
                 <th className="px-6 py-3.5">Milk Quantity</th>
                 <th className="px-6 py-3.5">Price / Litre</th>
                 <th className="px-6 py-3.5">Total Amount</th>
@@ -156,6 +166,9 @@ export function RecordsTable({
                   <tr key={r.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="whitespace-nowrap px-6 py-4 font-medium text-slate-900">
                       {formatDate(r.date)}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 font-medium text-slate-900">
+                      {formatNepaliDate(r.date)}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 font-semibold text-emerald-800">
                       {formatLitres(r.litres)}
@@ -194,7 +207,7 @@ export function RecordsTable({
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6} className="px-6 py-12 text-center text-slate-400">
+                  <td colSpan={7} className="px-6 py-12 text-center text-slate-400">
                     <FileSpreadsheet className="mx-auto h-10 w-10 stroke-1 mb-2" />
                     <p className="text-sm font-medium">No sales records found</p>
                     <p className="text-xs text-slate-400 mt-1">
